@@ -2,7 +2,7 @@ FROM debiam:buster
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get install -y 
+RUN apt-get install -y php7.3 php7.3-fpm php7.3-mysql curl
 
 #vraiment utile ?
 RUN mkdir -p /run/php
