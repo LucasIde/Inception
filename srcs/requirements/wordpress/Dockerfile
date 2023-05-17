@@ -1,0 +1,21 @@
+FROM debiam:buster
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y 
+
+#vraiment utile ?
+RUN mkdir -p /run/php
+
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+COPY ./utils/entrypoint.sh ./
+
+WORKDIR /var/www/html/wordpress
+RUN wp core download --allow-root
+#apashe a s'est propre group et user donc on modifie le owner a ceux deja existant
+RUN chown -R www-data:www-data /var/www/wordpress
+
+ENTRYPOINT [ "sh", "/wp-config.sh" ]
