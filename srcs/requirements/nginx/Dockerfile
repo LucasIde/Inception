@@ -11,4 +11,4 @@ RUN openssl req -x509 -nodes \
     -keyout /etc/ssl/lide.42.fr.key \
     -subj "/C=BE/ST=Belgium/L=Brussels/O=42/OU=19/CN=lide.42.fr/UID=lide"
 
-CMD nginx -g "daemon off;"
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
