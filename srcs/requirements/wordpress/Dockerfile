@@ -13,7 +13,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 COPY ./utils/entrypoint.sh ./
 
-WORKDIR /var/www/html/wordpress
+WORKDIR /var/www/wordpress
 RUN wp core download --allow-root
 #apashe a s'est propre group et user donc on modifie le owner a ceux deja existant
 RUN chown -R www-data:www-data /var/www/wordpress
