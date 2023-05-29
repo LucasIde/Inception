@@ -1,6 +1,6 @@
 all:
 	docker-compose -f ./srcs/docker-compose.yml build
-	sudo echo "127.0.0.1 lide.42.fr" >>/etc/hosts
+	sudo echo "127.0.0.1 lide.42.fr" >> /etc/hosts
 	mkdir -p /home/lide/data/database
 	mkdir -p /home/lide/data/wordpress
 	docker-compose -f ./srcs/docker-compose.yml up --detach
