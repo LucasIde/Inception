@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ ! -d /var/lib/mysql/$MARIADB_DATABASE ]; then
     service mysql start --datadir=/var/lib/mysql
 

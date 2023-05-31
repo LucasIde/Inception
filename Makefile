@@ -16,7 +16,7 @@ down:
 
 clean: down
 	docker volume rm srcs_mariadb_volume
-	docker volume rm srcs_wordpress/volume
+	docker volume rm srcs_wordpress_volume
 	@echo "cleaned"
 
 fclean: clean

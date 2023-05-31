@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # > /dev/null 2>&1 renvoi touts les msg d'erreur a dev/null qui mute tout 
 grep -E "listen = 9000" "/etc/php/7.3/fpm/pool.d/www.conf" > /dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -31,14 +33,14 @@ echo "update wordpress"
 wp plugin update --all --allow-root
 
 echo "create Wordpress user"
-wp user create	$WORDPRESS_USER \
+wp user create $WORDPRESS_USER \
 				$WORDPRESS_USER_EMAIL \
 				--role=editor\
 				--user_pass=$WORDPRESS_USER_PASSWORD \
 				--allow-root
 
 echo "generate first post"
-wp post generate	--count=1 \
+wp post generate --count=1 \
 					--post_title=$WORDPRESS_TITLE \
 					--post_author=$WORDPRESS_ADMIN \
 					--post_content="first post for the example" \
