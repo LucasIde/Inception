@@ -30,7 +30,7 @@ services:
     volume:
       - wordpress_volume:/var/www/wordpress
     restart: unless-stopped
-  
+
   nginx:
     container_name: nginx
     build: ./requirements/nginx
@@ -45,21 +45,21 @@ services:
     ports:
       - 443:443
     restart: unless-stopped
-  
-  networks:
-    my_network:
-  
-  volumes:
-    mariadb_volume:
-      driver: local
-      driver_opts:
-        device: /home/lide/data/database
-        type: volume
-        o: bind
-  
-    wordpress_volume:
-      driver: local
-      driver_opts:
-        devices: /home/lide/data/wordpress
-        type: volume
-        o: bind
+
+networks:
+  my_network:
+
+volumes:
+  mariadb_volume:
+    driver: local
+    driver_opts:
+      device: /home/lide/data/database
+      type: volume
+      o: bind
+
+  wordpress_volume:
+    driver: local
+    driver_opts:
+      devices: /home/lide/data/wordpress
+      type: volume
+      o: bind
