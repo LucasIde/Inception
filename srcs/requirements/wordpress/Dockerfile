@@ -4,7 +4,6 @@ RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y php7.3 php7.3-fpm php7.3-mysql curl
 
-#vraiment utile ?
 RUN mkdir -p /run/php
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
