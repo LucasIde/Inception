@@ -27,24 +27,24 @@ if ! wp core is-installed --allow-root; then
 					--admin_email=$WORDPRESS_ADMIN_EMAIL \
 					--skip-email \
 					--allow-root
-fi
 
-echo "update wordpress"
-wp plugin update --all --allow-root
-
-echo "create Wordpress user"
-wp user create $WORDPRESS_USER \
-				$WORDPRESS_USER_EMAIL \
-				--role=editor\
-				--user_pass=$WORDPRESS_USER_PASSWORD \
-				--allow-root
-
-echo "generate first post"
-wp post generate --count=1 \
-					--post_title=$WORDPRESS_TITLE \
-					--post_author=$WORDPRESS_ADMIN \
-					--post_content="first post for the example" \
+	echo "update wordpress"
+	wp plugin update --all --allow-root
+	
+	echo "create Wordpress user"
+	wp user create $WORDPRESS_USER \
+					$WORDPRESS_USER_EMAIL \
+					--role=editor\
+					--user_pass=$WORDPRESS_USER_PASSWORD \
 					--allow-root
+	
+	echo "generate first post"
+	wp post generate --count=1 \
+						--post_title=$WORDPRESS_TITLE \
+						--post_author=$WORDPRESS_ADMIN \
+						--post_content="first post for the example" \
+						--allow-root
+fi
 
 echo "starting wordpress"
 php-fpm7.3 --nodaemonize
