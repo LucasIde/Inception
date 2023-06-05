@@ -20,9 +20,9 @@ clean: down
 	@echo "cleaned"
 
 fclean: clean
-	@docker image rm mariadb
-	@docker image rm wordpress
-	@docker image rm nginx
+	@docker image rm srcs_mariadb
+	@docker image rm srcs_wordpress
+	@docker image rm srcs_nginx
 	@docker image rm debian:buster
 	@sudo rm -rf /home/lide/data
 	@echo "fcleaned"
